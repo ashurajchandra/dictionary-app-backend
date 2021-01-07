@@ -4,6 +4,7 @@ const db = require("./config/mongoose");
 const app = express();
 app.use(express.urlencoded());
 
+app.use(express.static("./build"));
 // handling cors
 
 app.use(function (req, res, next) {
