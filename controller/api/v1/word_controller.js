@@ -44,14 +44,28 @@ module.exports.search = async function (req, res) {
   }
 };
 
-module.exports.getWord = async function (req, res) {
+module.exports.fetchWords = async function (req, res) {
   try {
     let words = await Words.find({});
     console.log("words", words);
 
     return res.json(200, {
-      message: "assignment found succesfully",
+      message: "words found succesfully",
       data: words,
+    });
+  } catch (err) {
+    res.status(500).json({ message: "Internal server error", err });
+  }
+};
+
+module.exports.deleteWords = async function (req, res) {
+  try {
+    let word = await Words.findByIdAndDelete(req.params.id);
+    console.log("word", word);
+
+    return res.json(200, {
+      message: "word deleted succesfully",
+      data: word,
     });
   } catch (err) {
     res.status(500).json({ message: "Internal server error", err });

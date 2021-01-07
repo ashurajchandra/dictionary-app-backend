@@ -1,7 +1,9 @@
 //setting up mongoose
 
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/dictionary_model", {
+const uri =
+  "mongodb+srv://Anshu-rai89:Anshu%401998@cluster0-8amks.mongodb.net/test?retryWrites=true&w=majority";
+mongoose.connect(uri, {
   useNewUrlParser: true,
 });
 
